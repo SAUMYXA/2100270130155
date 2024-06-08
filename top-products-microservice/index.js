@@ -1,14 +1,16 @@
+// index.js
+
 const express = require('express');
-const { registerWithCompanies, getTopProducts, getProductDetails } = require('./services/ecommerceService');
+const { registerWithCompanies } = require('./services/ecommerceService');
+const productsRouter = require('./routes/products');
 
 const app = express();
 const port = 3000;
 
-
+// Middleware
 app.use(express.json());
 
-
-const productsRouter = require('./routes/products');
+// Routes
 app.use('/categories', productsRouter);
 
 app.listen(port, async () => {
